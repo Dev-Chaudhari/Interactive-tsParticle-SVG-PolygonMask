@@ -1,5 +1,5 @@
 ####
-CNA app
+CNA-app
 npm create-next-app@latest
 
 ####
