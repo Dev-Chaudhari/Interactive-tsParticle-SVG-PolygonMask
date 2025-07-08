@@ -1,7 +1,7 @@
 import Image from "next/image";
 import Message from "./components/message";
 import HomePage from "./components/homepage";
-import AntlerBackground from "./components/antlerbackground";
+import AntlerBackground from "./components/fusionstar";
 import Link from 'next/link';
 
 export default function Home() {

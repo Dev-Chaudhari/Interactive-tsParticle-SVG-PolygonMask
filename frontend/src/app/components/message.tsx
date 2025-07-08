@@ -1,6 +1,6 @@
 'use client';
 import {useState , useEffect} from "react";
-import AntlerBackground from "./antlerbackground";
+import AntlerBackground from "./fusionstar";
 import StarPolygonParticles from "./starpolygonparticles";
 import styles from "./styles/message.module.css";
 export default function Message(){

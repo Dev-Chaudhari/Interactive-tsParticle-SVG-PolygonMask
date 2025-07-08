@@ -1,74 +1,72 @@
-'use client';
-
 import React, {useCallback,useEffect} from "react";
 import Particles from "react-tsparticles";
 import tsParticles from "tsparticles";
-//use both loadPolygonMaskPlugin and loadFull to load plugin  important
-import {loadPolygonMaskPlugin} from "tsparticles-plugin-polygon-mask"
+import {loadPolygonMaskPlugin} from "tsparticles-plugin-polygon-mask";
 import {Engine} from "@tsparticles/engine";
 import {loadFull} from "tsparticles";
 import particleconfig from "./configurations/particles.json";
-import styles from "../components/styles/message.module.css";
+import styles from "./styles/message.module.css";
 // possible parameters can be int , float , string or boolean or objects made of them not constants/identifiers
 const option :any= {
     autoPlay:true,
-    background:{
-        color:{
-            value: "#000000"
-        },
-    // image:"url(http://localhost:5000/uploads/smalldeer.svg)",
-    position: "50% 50%",
-    repeat:"no-repeat",
-    size: "cover",
-    opacity:1,
-    },
-     polygon:{
+    polygon:{
             enable:true,
             type:"inline",
-            url:"http://localhost:5000/uploads/smalldeer.svg",
-
             draw :{
                 enable:true,
                 stroke:{
                     color:"#ffffff",
                     width:1,
-                    opacity:0.3,
+                    opacity:0.1,
                 },
             },
-         
+            inline: {
+                arrangement: "equidistant"
+            },
             move: {
-                radius:30,
+                radius:31,
                 type:"path",
             },
             scale:1,
-            inline:{
-                arrangement:"equidistant"
+            url:"paint-palette-art.svg",
+            position:{
+                x:50 ,
+                y:50
             }
-            
         },
+    background:{
+        color:{
+            value: "#000000"
+        },
+    image:"",
+    position: "50% 50%",
+    repeat:"no-repeat",
+    size: "cover",
+    opacity:1,
+    },
 
     backgroundMask:{
         composite:"destination-out" as GlobalCompositeOperation,
         cover:{
-            opacity:0.1,
+            opacity:1,
             color:{
-                value:"#000000",
+                value:"",
             }
         },
-        // enable:true,
+        enable:false,
     },
     clear:true,
     // defaultThemes:{},
     delay:0,
     fullScreen:{
         enable:true ,
-        zIndex:1
+        zIndex:0
     },
     detectRetina:true,
     duration:0,
     fpsLimit:120,
     interactivity:{
-        detectsOn:"canvas",
+        detectsOn:"window",
         events:{
             onHover:{
                 enable:true,
@@ -281,9 +279,10 @@ const option :any= {
                         enable:true,
                         minimumValue:0.1
                     },
-                    value:2
+                    value:0
                 },
                 enable:true,
+                generator: "polynomialPathGenerator"
             },
             outModes:{
                 default:"bounce",
@@ -295,8 +294,8 @@ const option :any= {
             random:false,
             speed:1,
             spin:{
-                acceleration:0,
-                enable:false
+                acceleration:3,
+                enable:true
             },
             straight:false,
             trail:{
@@ -319,7 +318,7 @@ const option :any= {
                 mode:"delete",
                 value:0
             },
-            value: 300,
+            value: 200,
         },
         opacity:{
             value:{
@@ -362,7 +361,7 @@ const option :any= {
                 width:0,
             },
             zIndex:{
-                value:1,
+                value:0,
                 opacityRate:1,
                 sizeRate:1,
                 velocityRate:1
@@ -451,18 +450,17 @@ const option :any= {
                 value:true,
             },
         },
-       
+        
 };
 
-const AntlerBackground:React.FC = ()=>{
+const FusionStar:React.FC = ()=>{
     const particlesInit = useCallback(async (main:any)=>{
-        await loadFull(main);
         await loadPolygonMaskPlugin(main);
-    },[]);
+        await loadFull(main)},[]);
    
     return( <div className= {`${styles.feature}`}> <Particles id= "antler"
         init={particlesInit} options={option} ></Particles>
         </div>
     );
 };
-export default AntlerBackground;
+export default FusionStar;
